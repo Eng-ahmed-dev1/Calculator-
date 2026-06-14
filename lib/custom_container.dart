@@ -37,11 +37,11 @@ class CustomContainer extends StatelessWidget {
             : null,
         border: Border.all(color: Colors.cyanAccent, width: 1.5),
         boxShadow: [
-          BoxShadow(
-            color: Colors.cyanAccent.withOpacity(0.5),
-            blurRadius: 15,
-            spreadRadius: 2,
-          ),
+          // BoxShadow(
+          //   color:  Colors.cyanAccent.withOpacity(0.5),
+          //   blurRadius: 15,
+          //   spreadRadius: 2,
+          // ),
         ],
       ),
       child: Center(
