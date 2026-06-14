@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 22, 64, 65),
         appBar: AppBar(
           backgroundColor: Colors.blueGrey,
           centerTitle: true,
@@ -28,17 +29,25 @@ class _MyAppState extends State<MyApp> {
         body: Container(
           child: Column(
             children: [
-              Container(
-                margin: EdgeInsets.all(10),
-                color: Colors.red,
+              CustomContainer(
                 height: 100,
                 width: double.infinity,
-                child: Text(
-                  "$res",
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                ),
+                text: "$res",
               ),
               Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  spacing: 20,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ActionButton("-"),
+                    ActionButton("+"),
+                    ActionButton("/"),
+                    ActionButton("x"),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 550,
                 child: GridView.builder(
@@ -52,29 +61,26 @@ class _MyAppState extends State<MyApp> {
                     crossAxisCount: 3,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    if(index == 10)
-                    {
-                      
-                    }
-                    return CustomContainer(text: index == 11 ? "-" : "$index");
+                    if (index == 10) {}
+                    return CustomContainer(text: index == 11 ? "=" : "$index");
                   },
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomContainer(text: "=", width: 250, height: 100),
-
-                    CustomContainer(text: "+", width: 100, height: 100),
-                  ],
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  Widget ActionButton(String text) {
+    return Expanded(
+      child: CustomContainer(
+        text: text,
+        height: 100,
+        color: Colors.teal.shade900,
+        textColor: Colors.cyanAccent,
       ),
     );
   }
